@@ -4,12 +4,12 @@ import classes from './Products.module.css';
 const Products = (props) => {
   return (
     <section className={classes.products}>
-      <h2>Buy your favorite products</h2>
+      <h2>Available Products</h2>
       <ul>
         <ProductItem
-          title='Test'
+          title='Product 1'
           price={6}
-          description='This is a first product - amazing!'
+          description='A brief description will be displayed here'
         />
       </ul>
     </section>
