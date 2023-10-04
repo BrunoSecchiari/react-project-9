@@ -1,24 +1,35 @@
-import classes from './CartItem.module.css';
+import { useDispatch } from 'react-redux';
+import { cartActions } from '../../store/cart-slice';
+import styles from './CartItem.module.css';
 
 const CartItem = (props) => {
+  const dispatch = useDispatch();
   const { title, quantity, total, price } = props.item;
 
+  const addItemHandler = () => {
+    dispatch(cartActions.addItem({ title, price }));
+  };
+
+  const removeItemHandler = () => {
+    dispatch(cartActions.removeItem({ title, price }));
+  };
+
   return (
-    <li className={classes.item}>
+    <li className={styles.item}>
       <header>
         <h3>{title}</h3>
-        <div className={classes.price}>
+        <div className={styles.price}>
           ${total.toFixed(2)}{' '}
-          <span className={classes.itemprice}>(${price.toFixed(2)}/item)</span>
+          <span className={styles.itemprice}>(${price.toFixed(2)}/item)</span>
         </div>
       </header>
-      <div className={classes.details}>
-        <div className={classes.quantity}>
+      <div className={styles.details}>
+        <div className={styles.quantity}>
           x <span>{quantity}</span>
         </div>
-        <div className={classes.actions}>
-          <button>-</button>
-          <button>+</button>
+        <div className={styles.actions}>
+          <button onClick={removeItemHandler}>-</button>
+          <button onClick={addItemHandler}>+</button>
         </div>
       </div>
     </li>
