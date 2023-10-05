@@ -5,20 +5,20 @@ const AVAILABLE_PRODUCTS = [
   {
     id: 'p1',
     price: 6,
-    title: '1st Book',
-    description: 'Description of the first book',
+    title: 'Product 1',
+    description: 'Description of the first product',
   },
   {
     id: 'p2',
     price: 10,
-    title: '2nd Book',
-    description: 'Description of the second book',
+    title: 'Product 2',
+    description: 'Description of the second product',
   },
   {
     id: 'p3',
     price: 5,
-    title: '3rd Book',
-    description: 'Description of the third book',
+    title: 'Product 3',
+    description: 'Description of the third product',
   },
 ];
 
@@ -31,6 +31,7 @@ const Products = (props) => {
           return (
             <ProductItem
               key={index}
+              id={product.id}
               title={product.title}
               price={product.price}
               description={product.description}

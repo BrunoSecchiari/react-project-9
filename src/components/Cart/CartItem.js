@@ -4,14 +4,15 @@ import styles from './CartItem.module.css';
 
 const CartItem = (props) => {
   const dispatch = useDispatch();
-  const { title, quantity, total, price } = props.item;
+
+  const { id, title, price, quantity, totalPrice } = props.item;
 
   const addItemHandler = () => {
-    dispatch(cartActions.addItem({ title, price }));
+    dispatch(cartActions.addItem({ id, title, price }));
   };
 
   const removeItemHandler = () => {
-    dispatch(cartActions.removeItem({ title, price }));
+    dispatch(cartActions.removeItem(id));
   };
 
   return (
@@ -19,7 +20,7 @@ const CartItem = (props) => {
       <header>
         <h3>{title}</h3>
         <div className={styles.price}>
-          ${total.toFixed(2)}{' '}
+          ${totalPrice.toFixed(2)}{' '}
           <span className={styles.itemprice}>(${price.toFixed(2)}/item)</span>
         </div>
       </header>

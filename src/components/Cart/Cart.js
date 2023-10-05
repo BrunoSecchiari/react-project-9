@@ -1,29 +1,30 @@
 import { useSelector } from 'react-redux';
 import Card from '../UI/Card';
-import styles from './Cart.module.css';
 import CartItem from './CartItem';
+import styles from './Cart.module.css';
 
 const Cart = (props) => {
-  const items = useSelector((state) => state.cart.items);
-
-  const itemsInCart = items.map((product, index) => {
-    return (
-      <CartItem
-        key={index}
-        item={{
-          title: product.title,
-          price: product.price,
-          quantity: product.quantity,
-          total: product.total,
-        }}
-      />
-    );
-  });
+  const cartItems = useSelector((state) => state.cart.items);
 
   return (
     <Card className={styles.cart}>
       <h2>Shopping Cart</h2>
-      <ul>{itemsInCart}</ul>
+      <ul>
+        {cartItems.map((item, index) => {
+          return (
+            <CartItem
+              key={index}
+              item={{
+                id: item.id,
+                title: item.title,
+                price: item.price,
+                quantity: item.quantity,
+                totalPrice: item.totalPrice,
+              }}
+            />
+          );
+        })}
+      </ul>
     </Card>
   );
 };

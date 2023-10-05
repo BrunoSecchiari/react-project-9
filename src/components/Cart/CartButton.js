@@ -4,7 +4,7 @@ import styles from './CartButton.module.css';
 
 const CartButton = (props) => {
   const dispatch = useDispatch();
-  const items = useSelector((state) => state.cart.items);
+  const cartQuantity = useSelector((state) => state.cart.totalQuantity);
 
   const toggleCartHandler = () => {
     dispatch(uiActions.toggle());
@@ -13,7 +13,7 @@ const CartButton = (props) => {
   return (
     <button className={styles.button} onClick={toggleCartHandler}>
       <span>Cart</span>
-      <span className={styles.badge}>{items.length}</span>
+      <span className={styles.badge}>{cartQuantity}</span>
     </button>
   );
 };
